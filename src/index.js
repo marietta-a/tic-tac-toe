@@ -19,8 +19,9 @@ import './index.css';
 
 class Square extends React.Component{
     render(){
+        //const className = this.props.xIsNext ? 'square textGreen' : 'square textBlue';
         return(
-            <button className="square" onClick={() => this.props.onClick()}>
+            <button className='square textGreen' onClick={() => this.props.onClick()}>
                 {this.props.value}
             </button>
         )
@@ -31,8 +32,9 @@ class Board extends React.Component{
 
     renderSquare(i){
         return (
-            <Square value={this.props.squares[i]} 
+            <Square key={i} value={this.props.squares[i]} 
                 onClick={()=>this.props.onClick(i)}
+                xIsNext={this.props.xIsNext}
             />
         );
     }
@@ -70,6 +72,7 @@ class Game extends React.Component {
             }],
             xIsNext: true,
             stepNumber: 0,
+            textColor: '',
         }
     }
 
@@ -87,7 +90,8 @@ class Game extends React.Component {
                 squares: squares,
             }]),
             stepNumber: history.length,
-            xIsNext: !this.state.xIsNext
+            xIsNext: !this.state.xIsNext,
+            textColor: this.state.xIsNext ? '#1b8237' : '#222299'
         });
     }
     jumpTo(step){
@@ -101,14 +105,16 @@ class Game extends React.Component {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
+        let i = 0;
 
         const moves = history.map((step, move) => {
+            i++;
             const desc = move ?
             'Go to move #' + move :
             'Go to game start';
             return(
-                <li>
-                    <button onClick={() => this.jumpTo(move)}>
+                <li key={i}>
+                    <button className='game-history' onClick={() => this.jumpTo(move)}>
                         {desc}
                     </button>
                 </li>
@@ -128,6 +134,7 @@ class Game extends React.Component {
                     <Board
                         squares={current.squares}
                         onClick={(i) => this.handleClick(i)}
+                        xIsNext={this.state.xIsNext}
                     />
                  </div>
                 <div className="game-info">
