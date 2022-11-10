@@ -37,8 +37,8 @@ body {
     margin-top: -1px;
     padding: 0;
     text-align: center;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     box-shadow: 2px 4px black;
   }
   
@@ -54,28 +54,27 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
+    width: max-content;
+    height:max-content;
   }
 
   .game-board{
     justify-content: center;
-    padding: 20px;
+    padding: 10%;
     background-color: blue;
-    border-radius: 5px;
+    border-radius: 2%;
   }
   
   .game-info {
-    margin-left: 20px;
+    margin-left: 5%;
   }
 
   .game-history {
-     border-radius: 5px;
+     border-radius: 2%;
      border-width: 0.25px;
-     height: 30px;
-     margin-bottom: 2px;
+     height: 10%;
+     margin-bottom: 2%;
      background-color: black;
      color: white;
-  }
-  
-  .player-status {
-
   }

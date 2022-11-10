@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import MediaQuery from "react-responsive";
 
 // class ShoppingList extends React.Component {
 //     render(){
